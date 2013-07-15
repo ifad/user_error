@@ -19,6 +19,10 @@ To make it catch your custom exceptions, create a new initializer in
       rescue_from 'My::Exception', :with => :forbidden
     end
 
+An initializer will help you on that, if you want. Just execute
+
+    railg g user_error:install
+
 e.g. for [CanCan](https://github.com/ryanb/cancan):
 
     UserError.configure do
