@@ -8,6 +8,27 @@ Add to your Gemfile
 
     gem 'user_error'
 
+## How to configure it
+
+The engine will catch every exception [defined in the `ActionDispatch::ExceptionWrapper` middleware](https://github.com/rails/rails/blob/master/actionpack/lib/action_dispatch/middleware/exception_wrapper.rb#L4).
+
+To make it catch your custom exceptions, create a new initializer in
+`config/initializers` with the following contents:
+
+    UserError.configure do
+      rescue_from 'My::Exception', :with => :forbidden
+    end
+
+e.g. for CanCan:
+
+    UserError.configure do
+      rescue_From 'CanCan::Unauthorized', :with => :forbidden
+    end
+
+The `:with` value will define the HTTP status code of the response, as defined in [Rack::Utils](http://rubydoc.info/github/rack/rack/master/Rack/Utils#HTTP_STATUS_CODES-constant),
+and it will also be an `I18n` namespace to customize the messages.
+
 ## Developers
 
 **Lleir Borras** <http://github.com/lleirborras>
+**Marcello Barnaba** <http://github.com/vjt>
