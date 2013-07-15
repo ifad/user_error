@@ -19,10 +19,10 @@ To make it catch your custom exceptions, create a new initializer in
       rescue_from 'My::Exception', :with => :forbidden
     end
 
-e.g. for CanCan:
+e.g. for [CanCan](https://github.com/ryanb/cancan):
 
     UserError.configure do
-      rescue_From 'CanCan::Unauthorized', :with => :forbidden
+      rescue_from 'CanCan::AccessDenied', :with => :forbidden
     end
 
 The `:with` value will define the HTTP status code of the response, as defined in [Rack::Utils](http://rubydoc.info/github/rack/rack/master/Rack/Utils#HTTP_STATUS_CODES-constant),
