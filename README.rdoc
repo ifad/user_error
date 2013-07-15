@@ -1,0 +1,13 @@
+# User Error
+
+Display better errors on rails apps with bootstrap
+
+## How to use it
+
+Add to your Gemfile
+
+    gem 'user_error'
+
+## Developers
+
+**Lleir Borras** <http://github.com/lleirborras>
