@@ -1,32 +1,30 @@
-<div class='span12'>
-  <h1><%= yield :title %></h1>
+<h1><%= yield :title %></h1>
 
-  <div class="alert alert-block alert-error">
-    <h4> <%= yield :exception_error_title%> </h4>
-      <br />
-    <p>
-      If you need assistance, please click on the <b><i class="icon-cog"></i>IT Support</b> button and submit a new support request.
-      <br />
-      The inclusion of the technical details in it will be greatly appreciated.
-    </p>
-    <p>Thank you.</p>
-  </div>
-
-  <h3>Technical details</h3>
-  <pre>
-  <%= Time.now.to_s %>
-  Status <%= details[:status] %>
-  <%= details[:name] %>
-  <%= details[:message] %>
-  </pre>
-
-  <%= link_to root_path, class: 'btn btn-primary' do %>
-    <i class="icon-home"></i>
-    Home
-  <% end -%>
-
-  <%= link_to "http://support.ifad.org/footprints", class: 'btn' do %>
-    <i class="icon-cog"></i>
-    IT support
-  <% end -%>
+<div class="alert alert-block alert-error">
+  <h4> <%= yield :exception_error_title%> </h4>
+    <br />
+  <p>
+    If you need assistance, please click on the <b><i class="icon-cog"></i>IT Support</b> button and submit a new support request.
+    <br />
+    The inclusion of the technical details in it will be greatly appreciated.
+  </p>
+  <p>Thank you.</p>
 </div>
+
+<h3>Technical details</h3>
+<pre>
+<%= Time.now.to_s %>
+Status <%= details[:status] %>
+<%= details[:name] %>
+<%= details[:message] %>
+</pre>
+
+<%= link_to root_path, class: 'btn btn-primary' do %>
+  <i class="icon-home"></i>
+  Home
+<% end -%>
+
+<%= link_to "http://support.ifad.org/footprints", class: 'btn' do %>
+  <i class="icon-cog"></i>
+  IT support
+<% end -%>
