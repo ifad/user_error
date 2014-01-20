@@ -1,6 +1,6 @@
 # User Error
 
-Display better errors on rails apps with bootstrap
+Display better errors on rails apps with bootstrap.
 
 ## How to use it
 
@@ -10,10 +10,10 @@ Add to your Gemfile
 
 ## How to configure it
 
-The engine will catch every exception [defined in the `ActionDispatch::ExceptionWrapper` middleware](https://github.com/rails/rails/blob/master/actionpack/lib/action_dispatch/middleware/exception_wrapper.rb#L4).
+The engine will catch every exception [defined in the `ActionDispatch::ExceptionWrapper` middleware](https://github.com/rails/rails/blob/master/actionpack/lib/action_dispatch/middleware/exception_wrapper.rb#L4)
+and set up an `exceptions_app` to handle them.
 
-To make it catch your custom exceptions, create a new initializer in
-`config/initializers` with the following contents:
+To make it catch your custom exceptions, create a new initializer in `config/initializers` with the following contents:
 
     UserError.configure do
       rescue_from 'My::Exception', :with => :forbidden
@@ -31,6 +31,18 @@ e.g. for [CanCan](https://github.com/ryanb/cancan):
 
 The `:with` value will define the HTTP status code of the response, as defined in [Rack::Utils](http://rubydoc.info/github/rack/rack/master/Rack/Utils#HTTP_STATUS_CODES-constant),
 and it will also be an `I18n` namespace to customize the messages.
+
+If you want to customize the UserError controller, do it in a `controller`
+block. E.g. if you have an `:authenticate` callback in your ApplicationController
+but you do not want the exception display to require `:authenticate`, you could do:
+
+    UserError.configure do
+      controller do
+        skip_before_filter :authenticate
+      end
+    end
+
+Of course, make sure that your application layout can deal with a `current_user` being nil.
 
 ## Developers
 

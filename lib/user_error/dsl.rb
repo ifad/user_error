@@ -17,6 +17,10 @@ module UserError
       rescue_responses.each {|map| map[exception] = action }
     end
 
+    def controller(&block)
+      ::UserError::ExceptionsController.instance_eval(&block)
+    end
+
     private
       def rescue_responses
         [app_rescue_responses, exception_wrapper_rescue_responses]
