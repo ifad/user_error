@@ -7,15 +7,15 @@ require "user_error/version"
 Gem::Specification.new do |s|
   s.name        = "user_error"
   s.version     = UserError::VERSION
-  s.authors       = ["Lleir Borras Metje"]
-  s.email         = ["l.borrasmetje@ifad.org"]
-  s.description   = %q{Display better errors on rails apps with bootstrap}
-  s.summary       = %q{Users always make mistakes ad we have to explain them in a better way what did they do wrong.}
-  s.homepage      = "http://www.ifad.org"
-  s.license       = "MIT"
+  s.authors     = ["Lleir Borras Metje", "Marcello Barnaba"]
+  s.email       = ["l.borrasmetje@ifad.org", "vjt@openssl.it"]
 
-  s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
-  s.test_files = Dir["test/**/*"]
+  s.description = %q{Display better errors on rails apps with bootstrap}
+  s.summary     = %q{Users always make mistakes ad we have to explain them in a better way what did they do wrong.}
+  s.homepage    = "http://github.com/ifad"
+  s.license     = "MIT"
+
+  s.files       = `git ls-files`.split("\n")
 
   s.add_dependency "rails", ">= 3.2.0"
 
