@@ -5,6 +5,13 @@ module UserError
       @status_code     = ActionDispatch::ExceptionWrapper.new(env, @exception).status_code
       @rescue_response = ActionDispatch::ExceptionWrapper.rescue_responses[@exception.class.name]
 
+      if request.format.symbol.in?([nil, :html]) && env['REQUEST_URI'] =~ /\.(\w+)$/i
+        # Try to infer the Mime type from the extension
+        if (mime = Mime::Type.lookup_by_extension($1))
+          request.format = mime.to_sym # Stupid.to_sym
+        end
+      end
+
       respond_to do |format|
         format.html {
           view = %{400 401 403 404 422 500}.include?(@status_code.to_s) ? @status_code.to_s : "show"
