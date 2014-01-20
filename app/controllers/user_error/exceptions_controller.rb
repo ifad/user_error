@@ -20,7 +20,7 @@ module UserError
         }
         format.json { render json: { error: details }, status: @status_code }
         format.xml  { render xml: details, root: "error", status: @status_code }
-        format.all  { render status: @status_code }
+        format.all  { render nothing: true, status: @status_code }
       end
     end
 
