@@ -16,9 +16,13 @@ Gem::Specification.new do |s|
   s.license     = "MIT"
 
   s.files       = `git ls-files`.split("\n")
+  s.test_files  = Dir["spec/**/*"]
 
   s.add_dependency "rails", ">= 3.2.0"
+  s.add_dependency "rspec-rails"
+  s.add_dependency "capybara"
 
+  s.add_development_dependency "sqlite3"
   s.add_development_dependency "bundler", "~> 1.3"
   s.add_development_dependency "rake"
 end

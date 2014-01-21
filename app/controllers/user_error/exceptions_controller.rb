@@ -1,5 +1,5 @@
 module UserError
-  class ExceptionsController < ApplicationController
+  class ExceptionsController < ::ApplicationController
     def show
       @exception       = env['action_dispatch.exception']
       @status_code     = ActionDispatch::ExceptionWrapper.new(env, @exception).status_code

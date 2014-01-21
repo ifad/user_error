@@ -44,7 +44,17 @@ but you do not want the exception display to require `:authenticate`, you could 
 
 Of course, make sure that your application layout can deal with a `current_user` being nil.
 
+## Contributing
+
+1. Fork the repository on Github
+2. Create a named feature branch (like `add_component_x`)
+3. Write you change
+4. Write tests for your change (if applicable)
+5. Run the tests, ensuring they all pass
+6. Submit a Pull Request using Github
+
 ## Developers
 
 **Lleir Borras** <http://github.com/lleirborras>
+
 **Marcello Barnaba** <http://github.com/vjt>
