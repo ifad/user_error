@@ -1,5 +1,15 @@
 module UserError
   class ExceptionsController < ::ApplicationController
+
+    helper do
+        # sometimes user_error needs to look for routes in the main app
+        # thanks @npj !!
+        def method_missing(method, *args, &block)
+          super unless method.to_s =~ /(_path|_url)\z/
+          main_app.send(method, *args, &block)
+        end
+    end
+
     def show
       @exception       = env['action_dispatch.exception']
       @status_code     = ActionDispatch::ExceptionWrapper.new(env, @exception).status_code
