@@ -58,3 +58,7 @@ Of course, make sure that your application layout can deal with a `current_user`
 **Lleir Borras** <http://github.com/lleirborras>
 
 **Marcello Barnaba** <http://github.com/vjt>
+
+## Denominazione d'Origine Controllata
+
+This software is Made in Italy :it: :smile:.
