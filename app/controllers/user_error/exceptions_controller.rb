@@ -11,6 +11,7 @@ module UserError
     end
 
     def show
+      env = request.env
       @exception       = env['action_dispatch.exception']
       @status_code     = ActionDispatch::ExceptionWrapper.new(env, @exception).status_code
       @rescue_response = ActionDispatch::ExceptionWrapper.rescue_responses[@exception.class.name]
@@ -30,7 +31,7 @@ module UserError
         }
         format.json { render json: { error: details }, status: @status_code }
         format.xml  { render xml: details, root: "error", status: @status_code }
-        format.all  { render nothing: true, status: @status_code }
+        format.all  { render plain: '', status: @status_code }
       end
     end
 

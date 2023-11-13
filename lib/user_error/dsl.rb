@@ -1,5 +1,4 @@
 module UserError
-
   module DSL
     extend self
 
@@ -21,19 +20,17 @@ module UserError
       ::UserError::ExceptionsController.instance_eval(&block)
     end
 
-    private
-      def rescue_responses
-        [app_rescue_responses, exception_wrapper_rescue_responses]
-      end
+  private
+    def rescue_responses
+      [app_rescue_responses, exception_wrapper_rescue_responses]
+    end
 
-      def app_rescue_responses
-        Rails.application.config.action_dispatch.rescue_responses
-      end
+    def app_rescue_responses
+      Rails.application.config.action_dispatch.rescue_responses
+    end
 
-      def exception_wrapper_rescue_responses
-        ActionDispatch::ExceptionWrapper.rescue_responses
-      end
-
+    def exception_wrapper_rescue_responses
+      ActionDispatch::ExceptionWrapper.rescue_responses
+    end
   end
-
 end
